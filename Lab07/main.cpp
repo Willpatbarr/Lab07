@@ -96,8 +96,8 @@ int main()
    // initialize variables
    double angle = prompt("what is your angle in degrees?: ");
    double speed = prompt("what is your speed in m/s?: ");
-   double x = prompt("what is your x coordinate?: ");
-   double y = prompt("what is your y coordinate?: ");
+   double x = 0.0;
+   double y = 0.0;
    
    // convert degrees to radians
    double angleInRad = radFromDeg(angle);
@@ -113,9 +113,13 @@ int main()
    // loop 20 times
    for (int t = 1; t <= 20; t++)
    {
+      // update the position
       x = x + dx * TIME;
       y = y + dy * TIME;
-      
+
+      // update the vertical velocity component with acceleration due to gravity
+      dy = dy + (-9.8) * TIME;
+
       // display updated values
       cout << "Time: " << t << " | Distance: " << x << " | Altitude: " << y << endl;
    }
