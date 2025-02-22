@@ -7,7 +7,7 @@ using namespace std;
 
 // Set Global Variables
 #define WEIGHT   46.7   // Weight in KG
-#define TIME     1           // the amount of time in seconds used to increment
+#define TIME     0.01           // the amount of time in seconds used to increment
 
 /***********************************************
  * COMPUTE HORIZONTAL COMPONENT
@@ -96,8 +96,9 @@ int main()
    // initialize variables
    double angle = prompt("what is your angle in degrees?: ");
    double speed = prompt("what is your speed in m/s?: ");
-   double x = 0.0;
-   double y = 0.0;
+   double x = 0.0; // set to 0.0 as default
+   double y = 0.0; // set to 0.0 as default
+   double t = 0.0; // used to keep track of hang time
    
    // convert degrees to radians
    double angleInRad = radFromDeg(angle);
@@ -110,8 +111,8 @@ int main()
    cout << "init dx: " << dx << endl;
    cout << "init dy: " << dy << endl;
    
-   // loop 20 times
-   for (int t = 1; t <= 20; t++)
+   // loop until the altitude reaches a negative value
+   while (y >= 0)
    {
       // update the position
       x = x + dx * TIME;
@@ -119,10 +120,18 @@ int main()
 
       // update the vertical velocity component with acceleration due to gravity
       dy = dy + (-9.8) * TIME;
+      
+      // update the hangtime
+      t += TIME;
 
       // display updated values
-      cout << "Time: " << t << " | Distance: " << x << " | Altitude: " << y << endl;
+      cout << "Time: " << t << " | Distance: " << x << " | Altitude: " << y << " | Hang Time: " << t << endl;
    }
+   
+   cout << " --------------------------------------------" << endl;
+   cout << "Ground Impact" << endl;
+   cout << "Final Values" << endl;
+   cout << "Time: " << t << " | Distance: " << x << " | Altitude: " << y << " | Hang Time: " << t << endl;
    
    return 0;
 }
