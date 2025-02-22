@@ -6,10 +6,48 @@
 using namespace std;
 
 // Set Global Variables
-#define WEIGHT   46.7   // Weight in KG
-#define TIME     0.01   // the amount of time in seconds used to increment
-#define DRAG     0.3    // drag coeffecient as a constant
-#define AIR      0.6    // the density of air as a constant
+#define MASS                 46.7    // Weight in KG
+#define DIAMETER             0.15489 // Diameter of the shell
+#define TIME                 0.01    // the amount of time in seconds used to increment
+#define DRAG_COEFFICIENT     0.3     // drag coeffecient as a constant
+#define AIR_DENSITY          0.6     // the density of air as a constant
+
+/**************************************************
+ * COMPUTE CIRCLE AREA
+ * computes the surface area of a circle
+ * INPUT
+ *      d: diameter of the circle
+ * OUTPUT
+ *      a: surface area in square meters
+ ***************************************************/
+double computeCircleArea(double d)
+{
+   // perform the area calculation
+   double a = M_PI * pow(d / 2.0, 2);
+   
+   // return the surface area
+   return a;
+}
+
+/**************************************************
+ * COMPUTE DRAG FORCE
+ * computes the drag force on an object
+ * INPUT
+ *      v: velocity
+ *      c: drag coefficient
+ *      p: density of the air
+ *      a: surface area
+ * OUTPUT
+ *      d: drage force in newtons
+ ***************************************************/
+double computeDragForce(double v, double c, double p, double a)
+{
+   // perform the drag force equation
+   double d = 0.5 * c * p * (v * v) * a;
+   
+   // return the drag force
+   return d;
+}
 
 /***********************************************
  * INTERPOLATE GRAVITY VALUE
@@ -93,6 +131,68 @@ double computeVerticalComponent(double a, double total)
    return (cos(a) * total);
 }
 
+/************************************************
+ * COMPUTE TOTAL COMPONENT
+ * Given the horizontal and vertical components of
+ * something (velocity or acceleration), determine
+ * the total component. To do this, use the Pythagorean Theorem:
+ *    x^2 + y^2 = t^2
+ * where:
+ *      x
+ *    +-----
+ *    |   /
+ *  y |  / total
+ *    | /
+ *    |/
+ * INPUT
+ *    x : horizontal component
+ *    y : vertical component
+ * OUTPUT
+ *    total : total component
+ ***********************************************/
+double computeTotalComponent(double x, double y)
+{
+   //return statement
+   return sqrt((x * x + y * y));
+}
+
+/**************************************************
+ * COMPUTE ACCELERATION
+ * Find the acceleration given a thrust and mass.
+ * This will be done using Newton's second law of motion:
+ *     f = m * a
+ * INPUT
+ *     f : force, in Newtons (kg * m / s^2)
+ *     m : mass, in kilograms
+ * OUTPUT
+ *     a : acceleration, in meters/second^2
+ ***************************************************/
+double computeAcceleration(double f, double m)
+{
+   //return statement
+   return (f/m);
+}
+
+/***********************************************
+ * COMPUTE VELOCITY
+ * Starting with a given velocity, find the new
+ * velocity once acceleration is applied. This is
+ * called the Kinematics equation. The
+ * equation is:
+ *     v = v + a t
+ * INPUT
+ *     v : velocity, in meters/second
+ *     a : acceleration, in meters/second^2
+ *     t : time, in seconds
+ * OUTPUT
+ *     v : new velocity, in meters/second
+ ***********************************************/
+double computeVelocity(double v, double a, double t)
+{
+   //return statement
+   return (v + a * t);
+}
+
 /*************************************************
  * RADIANS FROM DEGEES
  * Convert degrees to radians:
@@ -130,12 +230,15 @@ double prompt(string prompt)
 int main()
 {
    // initialize variables
-   double angle = prompt("what is your angle in degrees?: ");
-   double speed = prompt("what is your speed in m/s?: ");
+//   double angle = prompt("what is your angle in degrees?: ");
+   double angle = 75.0;
+   double speed= 827.0;
+//   double speed = prompt("what is your speed in m/s?: ");
    double x = 0.0; // set to 0.0 as default
    double y = 0.0; // set to 0.0 as default
    double t = 0.0; // used to keep track of hang time
    double g = 9.807; // initial value at sea level
+   double area = computeCircleArea(DIAMETER); // computes the circular area of the shell
    
    // convert degrees to radians
    double angleInRad = radFromDeg(angle);
@@ -157,15 +260,40 @@ int main()
       
       // update gravity
       g = interpolateGravity(y);
-
-      // update the vertical velocity component with acceleration due to gravity
-      dy = dy + (-g) * TIME;
       
+      // compute total velocity
+      double velocity = computeTotalComponent(dx, dy);
+      
+      // compute drag force
+      double dragForce = computeDragForce(velocity, DRAG_COEFFICIENT, AIR_DENSITY, area);
+      
+      // compute acceleration from drag
+      double dragAcceleration = computeAcceleration(dragForce, MASS);
+      
+      // compute drag angle
+      double dragAngle = atan2(dy, dx);
+      
+      // compute the components of the drag acceleration
+      double ddx = computeHorizontalComponent(dragAngle, dragAcceleration);
+      double ddy = computeVerticalComponent(dragAngle, dragAcceleration);
+
+      // update dx and dy to account for drag acceleration
+      dx = computeVelocity(dx, -ddx, TIME);
+      dy = computeVelocity(dy, -ddy, TIME);
+      dy = computeVelocity(dy, -g, TIME); // update for gravity as well
+
       // update the hangtime
       t += TIME;
 
       // display updated values
-      cout << "Time: " << t << " | Distance: " << x << " | Altitude: " << y << endl;
+      cout << "Time: " << t
+           << " | Distance: " << x
+           << " | Altitude: " << y
+           << " | Velocity: " << velocity
+           << " | Drag Force: " << dragForce
+           << " | dx: " << dx
+           << " | dy: " << dy
+           << endl;
    }
    
    cout << " --------------------------------------------" << endl;
