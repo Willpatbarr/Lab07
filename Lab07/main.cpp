@@ -232,7 +232,7 @@ int main()
    // initialize variables
 //   double angle = prompt("what is your angle in degrees?: ");
    double angle = 75.0;
-   double speed= 827.0;
+   double speed = 827.0;
 //   double speed = prompt("what is your speed in m/s?: ");
    double x = 0.0; // set to 0.0 as default
    double y = 0.0; // set to 0.0 as default
@@ -274,13 +274,13 @@ int main()
       double dragAngle = atan2(dy, dx);
       
       // compute the components of the drag acceleration
-      double ddx = computeHorizontalComponent(dragAngle, dragAcceleration);
-      double ddy = computeVerticalComponent(dragAngle, dragAcceleration);
+      double ddx = - computeHorizontalComponent(dragAngle, dragAcceleration);
+      double ddy = - g - computeVerticalComponent(dragAngle, dragAcceleration);
 
       // update dx and dy to account for drag acceleration
-      dx = computeVelocity(dx, -ddx, TIME);
-      dy = computeVelocity(dy, -ddy, TIME);
-      dy = computeVelocity(dy, -g, TIME); // update for gravity as well
+      dx = computeVelocity(dx, ddx, TIME);
+      dy = computeVelocity(dy, ddy, TIME);
+      //dy = computeVelocity(dy, -g, TIME); // update for gravity as well
 
       // update the hangtime
       t += TIME;
