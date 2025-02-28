@@ -14,8 +14,8 @@ class Simulation
 {
 public:
    // getters
-   double getDistance() const { return distance;  }
-   double getHangTime() const { return hangTime;  }
+   double getDistance() const       { return distance;       }
+   double getHangTime() const       { return hangTime;       }
    
    // setters
    void setAngle(const Direction & d)    { this->angle = d;     }
