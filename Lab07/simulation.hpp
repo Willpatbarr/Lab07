@@ -13,9 +13,22 @@
 class Simulation
 {
 public:
+   
+   // setters
+   void setAngle(const Direction & d)    { this->angle = d;     }
+   void setInterval(double t)            { this->interval = t;  }
+   
    void fire();
-   Point ptInitial;
+   
+   
+private:
+   Point ptInitial = Point();
+   Direction angle;
+   double interval;
+   double muzzleVelocity = 827.0;
 };
+
+
 
 struct PositionVelocityTime
 {

@@ -15,5 +15,5 @@ void Simulation::fire()
 {
    // start by setting position, velocity, and time
    PositionVelocityTime pvt;
-   pvt.pt = ptInitial
+   pvt.pt = ptInitial;
 }
