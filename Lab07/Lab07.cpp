@@ -19,4 +19,15 @@ int main()
 {
    // setup the simulation
    Simulation s;
+   s.setInterval(0.01);
+   
+   Direction d = Direction(75);
+   s.setAngle(d);
+   
+   // run the simulation
+   s.fire();
+   
+   // output
+   
+   return 0;
    }
