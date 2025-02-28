@@ -19,7 +19,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		535FA9AC2D69BA2E00C7E0E5 /* Lab07 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lab07; sourceTree = BUILT_PRODUCTS_DIR; };
+		535FA9AC2D69BA2E00C7E0E5 /* Lab07 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = Lab07; path = "/Users/peytonmarkus/Library/CloudStorage/OneDrive-BYU-Idaho/BYUI/Winter_2025/Encapsulation_Design/Artillery/Lab07/build/Debug/Lab07"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -45,16 +45,7 @@
 			isa = PBXGroup;
 			children = (
 				535FA9AE2D69BA2E00C7E0E5 /* Lab07 */,
-				535FA9AD2D69BA2E00C7E0E5 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		535FA9AD2D69BA2E00C7E0E5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				535FA9AC2D69BA2E00C7E0E5 /* Lab07 */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -106,7 +97,7 @@
 			mainGroup = 535FA9A32D69BA2E00C7E0E5;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 535FA9AD2D69BA2E00C7E0E5 /* Products */;
+			productRefGroup = 535FA9A32D69BA2E00C7E0E5;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

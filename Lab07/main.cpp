@@ -23,7 +23,7 @@ using namespace std;
 double computeCircleArea(double d)
 {
    // perform the area calculation
-   double a = M_PI * pow(d / 2.0, 2);
+   double a = M_PI * (d / 2.0) * (d / 2.0);
    
    // return the surface area
    return a;
