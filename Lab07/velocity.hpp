@@ -8,6 +8,7 @@
 #pragma once
 
 #include <stdio.h>
+#include "direction.hpp"
 
 /***************************************
  * Velocity
@@ -17,9 +18,9 @@ class Velocity
 {
 public:
    // constructors
-   Velocity()                        : dx(0.0), dy(0.0) {}
-   Velocity(double dx, double dy)    : dx(dx), dy(dy) {}
-   Velocity(const Velocity & rhs)    : dx(rhs.dx), dy(rhs.dy) {}
+   Velocity() : dx(0.0), dy(0.0) {}
+   Velocity(double dx, double dy) : dx(dx), dy(dy) {}
+   Velocity(const Velocity & rhs) : dx(rhs.dx), dy(rhs.dy) {}
    Velocity & operator = (const Velocity & rhs)
    {
       dx = rhs.dx;
@@ -43,7 +44,7 @@ public:
    }
    void setSpeed(double speed)
    {
-      setSpeedDirection(speed, getDirection);
+      setSpeedDirection(speed, getDirection());
    }
    void setSpeedDirection(double speed, const Direction & direction);
    

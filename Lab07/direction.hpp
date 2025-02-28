@@ -7,9 +7,36 @@
 
 #pragma once
 
+#define USE_MATH_DEFINES
 #include <cmath>
+#include <iostream>
 
-/***************************************
+#ifndef M_PI
+#define M_PI      3.14159265358979323846
+#define M_PI_2    1.57079632679489661923
+#endif // M_PI
+
+/**************************************
+ * DEGREES FROM RADIANS
+ *
+***************************************/
+inline double degreesFromRadians(double radians)
+{
+   return 360.0 * (radians / (2.0 * M_PI));
+}
+
+
+/**************************************
+ * RADIANS FROM DEGREES
+ *
+***************************************/
+inline double radiansFromDegrees(double degrees)
+{
+   return (degrees / 360.0) * (2.0 * M_PI);
+}
+
+
+/**************************************
  * Direction
  * Determine the direction
 ***************************************/
@@ -22,7 +49,7 @@ public:
    {
       radians = radiansFromDegrees(degrees);
    }
-   Direction{const Direction & rhs}    : radians(rhs.radians) {}
+   Direction(const Direction & rhs)    : radians(rhs.radians) {}
    Direction & operator = (const Direction& rhs)
    {
       radians = rhs.radians;
@@ -34,7 +61,7 @@ public:
    void setDegrees(double rhs) { radians = radiansFromDegrees(rhs);  }
    void setDxDy (double dx, double dy)
    {
-      radians = atan2(dx, dy)
+      radians = atan2(dx, dy);
    }
    
    void setDown()   { radians = M_PI;          }

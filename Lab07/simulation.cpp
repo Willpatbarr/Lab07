@@ -6,3 +6,14 @@
 //
 
 #include "simulation.hpp"
+
+/***************************************
+ * Fire
+ * Handles execution
+***************************************/
+void Simulation::fire()
+{
+   // start by setting position, velocity, and time
+   PositionVelocityTime pvt;
+   pvt.pt = ptInitial
+}
