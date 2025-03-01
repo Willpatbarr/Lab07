@@ -106,3 +106,10 @@ inline double linearInterpolation(const Mapping & zero,
                               one.domain, one.range,
                               d);
 }
+double machFromAltitude(double altitude);
+double densityFromAltitude(double altitude);
+double dragFromMach(double mach);
+double computeHorizontalComponent(double angle, double speed);
+double computeVerticalComponent(double angle, double speed);
+double gravityFromAltitude(double altitude);
+double computeDistance(double initial, double velocity, double time, double acceleration);

@@ -182,3 +182,57 @@ double dragFromMach(double mach)
 }
 
 
+
+/***********************************************
+ * COMPUTE HORIZONTAL COMPONENT
+ * Find the horizontal component of a velocity or acceleration.
+ * The equation is:
+ *     sin(a) = x / total
+ * This can be expressed graphically:
+ *      x
+ *    +-----
+ *    |   /
+ *  y |  / total
+ *    |a/
+ *    |/
+ * INPUT
+ *     a : angle, in radians
+ *     total : total velocity or acceleration
+ * OUTPUT
+ *     x : the vertical component of the total
+ ***********************************************/
+double computeHorizontalComponent(double a, double total)
+{
+   //return statement
+   return (sin(a) * total);
+}
+
+/***********************************************
+ * COMPUTE VERTICAL COMPONENT
+ * Find the vertical component of a velocity or acceleration.
+ * The equation is:
+ *     cos(a) = y / total
+ * This can be expressed graphically:
+ *      x
+ *    +-----
+ *    |   /
+ *  y |  / total
+ *    |a/
+ *    |/
+ * INPUT
+ *     a : angle, in radians
+ *     total : total velocity or acceleration
+ * OUTPUT
+ *     y : the vertical component of the total
+ ***********************************************/
+double computeVerticalComponent(double a, double total)
+{
+   //return statement
+   return (cos(a) * total);
+}
+
+double computeDistance(double initDistance, double velocity, double time, double acceleration)
+{
+   double newDistance = initDistance + velocity * time + 0.5 * acceleration * (time * time);
+   return newDistance;
+}

@@ -9,6 +9,7 @@
 
 #include <stdio.h>
 #include "direction.hpp"
+#include "direction.cpp"
 
 /***************************************
  * Velocity
@@ -29,10 +30,10 @@ public:
    }
    
    // getters
-   double getDX()             const { return dx; }
-   double getDY()             const { return dy; }
+   double getDX()             const { return dx;    }
+   double getDY()             const { return dy;    }
    double getSpeed()          const;
-   Direction getDirection()   const;
+   Direction getDirection()   const { return direction; }
    
    // setters
    void setDX(double dx)                { this->dx = dx;                   }
@@ -70,4 +71,6 @@ public:
 private:
    double dx;
    double dy;
+   double speed;
+   Direction direction;
 };

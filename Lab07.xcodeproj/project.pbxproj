@@ -19,7 +19,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		535FA9AC2D69BA2E00C7E0E5 /* Lab07 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = Lab07; path = "/Users/peytonmarkus/Library/CloudStorage/OneDrive-BYU-Idaho/BYUI/Winter_2025/Encapsulation_Design/Artillery/Lab07/build/Debug/Lab07"; sourceTree = "<absolute>"; };
+		53D252752D71505F004EE886 /* Lab07 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lab07; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -45,6 +45,7 @@
 			isa = PBXGroup;
 			children = (
 				535FA9AE2D69BA2E00C7E0E5 /* Lab07 */,
+				53D252752D71505F004EE886 /* Lab07 */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,7 +71,7 @@
 			packageProductDependencies = (
 			);
 			productName = Lab07;
-			productReference = 535FA9AC2D69BA2E00C7E0E5 /* Lab07 */;
+			productReference = 53D252752D71505F004EE886 /* Lab07 */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -237,9 +238,10 @@
 		535FA9B42D69BA2E00C7E0E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = Z5L7483WG9;
+				DEVELOPMENT_TEAM = 7TGV8R73HC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -248,9 +250,10 @@
 		535FA9B52D69BA2E00C7E0E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = Z5L7483WG9;
+				DEVELOPMENT_TEAM = 7TGV8R73HC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

@@ -4,12 +4,14 @@
 //
 //  Created by Peyton Markus on 2/27/25.
 //
+#pragma once
 
 #include "physics.hpp"
 #include "direction.hpp"
 #include "point.hpp"
 #include "velocity.hpp"
 #include <stdlib.h>
+
 class Simulation
 {
 public:
@@ -29,6 +31,7 @@ private:
    Direction angle;
    double interval;
    double muzzleVelocity = 827.0;
+   double shellMass = 46.7;
    double distance;
    double hangTime;
 };
